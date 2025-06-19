@@ -1,1 +1,9 @@
-I am gonna put how to install this in here at some point
+#Git Log
+
+## Description
+
+## Install
+first clone the repo run
+''git clone https://github.com/BoaN235/GitLog.git''
+
+
