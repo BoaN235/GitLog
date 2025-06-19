@@ -35,7 +35,7 @@ class user:
 
     def setup_client(self):
         print("read the readme for a explanation on how to get the needed variables \nhttps://github.com/BoaN235/GitLog/blob/main/readme.md")
-        self.access_token = input("please input your github access token")
+        self.access_token = input("please input your github access token:\n")
         config = configparser.RawConfigParser()
         config['AUTH'] = {'github-access-token': self.access_token}
         with open('git.config', 'w') as config_file:
