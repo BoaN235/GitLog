@@ -1,12 +1,8 @@
-from github import Github
+from github import Github, Auth
 import json
-# Authentication is defined via github.Auth
-from github import Auth
-import requests
 import datetime
-
-
 import configparser
+
 config = configparser.RawConfigParser()
 config.read('git.config')
 access_token = config.get('AUTH', 'github-access-token')
@@ -14,39 +10,89 @@ access_token = config.get('AUTH', 'github-access-token')
 class user:
     def __init__(self, access_token):
         self.access_token = access_token
-        self.repos = {}
+        self.running = True
+        self.cur_repo = ""
+
+    def main_menu(self):
+        print("\nwelcome to GitLog: Options\n\n")
+        menu_option = input("1) Create Log \n2) Set Current Repo \n3) Update Repo Data \n4) Setup \n5) close\n") # get menu input
+        if menu_option == "1":
+            self.update_log() # update logs
+            return
+        if menu_option == "2":
+            self.set_current_repo() # setting current repo
+            return
+        if menu_option == "3": 
+            self.update_repo_data() # update repo data
+            return
+        if menu_option == "4":
+            self.setup_client() # setup client .config file
+            return
+        if menu_option == "5":
+            self.running = False # quit
+        else:
+            print("input not recognized\n")
+
+    def setup_client(self):
+        print("read the readme for a explanation on how to get the needed variables \nhttps://github.com/BoaN235/GitLog/blob/main/readme.md")
+        self.access_token = input("please input your github access token")
+        config = configparser.RawConfigParser()
+        config['AUTH'] = {'github-access-token': self.access_token}
+        with open('git.config', 'w') as config_file:
+            config.write(config_file)
+        self.connect_to_github()
 
     def access_github(self):
         # using an access token
-        auth = Auth.Token(self.access_token)
-
-        # First create a Github instance:
-        # Public Web Github
-        self.g = Github(auth=auth)
-        self.user = self.g.get_user()
-        updata_data = input("update data[Y/N]")
-        if updata_data == "Y":
-            self.serialize_data()
-        self.update_log()
-        # To close connections after use
+        try: 
+            self.connect_to_github()
+        except:
+            print("looks like your settings are not setup or your github access token is wrong")
+            self.setup_client
+        while self.running:
+            self.main_menu()
         self.g.close()
 
+    def connect_to_github(self):
+            auth = Auth.Token(self.access_token)
+            self.g = Github(auth=auth)
+            self.user = self.g.get_user()
 
-    def serialize_data(self):
-        data = []
-        for repo in self.user.get_repos():
+    def update_repo_data(self):
+        data = [] 
+        for repo in self.user.get_repos(): # grabs repo names from github
             data.append(str(repo.full_name))
-        with open('data.json', 'w') as f:
+        with open('data.json', 'w') as f: # updates a json file
             json.dump(data, f, sort_keys=True)
 
-            
+    def set_current_repo(self):
+        print(self.cur_repo)
+        with open('data.json', 'r') as f: # open serialized data 
+            data = json.load(f)
+        print("Which repo would you like to add a log file to")
+        i = 0 
+        for repo in data: # create the options of each repo
+            print(str(i) + ") " + str(repo) + "")
+            i += 1
+        repo_input = input("Which repo would you like to add a log file to \n")
+        try: # check if the number is an int 
+            repo_index = int(repo_input)
+            if repo_index < i:
+                self.cur_repo = data[int(repo_input)] # sets current repo
+            else:
+                print("input is not a valid number\n")
+        except ValueError:
+            print("input is not a valid character\n")
+
 
     def update_log(self):
-        self.current_repo = ""
+        if self.cur_repo == "":
+            print("current repo not set\n")
+            self.set_current_repo()
         with open('data.json', 'r') as f:
             data = json.load(f)
         for repo_name in data:
-            if repo_name == "BoaN235/gitloggertest":
+            if repo_name == self.cur_repo:
                 l = log()
                 current_repo = self.g.get_repo(str(repo_name))
                 r = repository(current_repo)
@@ -70,7 +116,7 @@ class repository:
         if Has_Log_File == False:
             msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log
             self.repo.create_file("LOG.MD", "added LOG.MD file", msg)
-        print("Completed Log")
+        print("\nCompleted Log")
         return
         
 
