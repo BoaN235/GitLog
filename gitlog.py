@@ -1,15 +1,12 @@
 from github import Github, Auth
 import json
 import datetime
-import configparser
+import keyring
 
-config = configparser.RawConfigParser()
-config.read('git.config')
-access_token = config.get('AUTH', 'github-access-token')
 
 class user:
-    def __init__(self, access_token):
-        self.access_token = access_token
+    def __init__(self):
+        self.access_token = keyring.get_password("system", "github-access-token")
         self.running = True
         self.cur_repo = ""
 
@@ -36,10 +33,7 @@ class user:
     def setup_client(self):
         print("read the readme for a explanation on how to get the needed variables \nhttps://github.com/BoaN235/GitLog/blob/main/readme.md")
         self.access_token = input("please input your github access token:\n")
-        config = configparser.RawConfigParser()
-        config['AUTH'] = {'github-access-token': self.access_token}
-        with open('git.config', 'w') as config_file:
-            config.write(config_file)
+        keyring.set_password("system", "github-access-token", self.access_token)
         self.connect_to_github()
 
     def access_github(self):
@@ -48,7 +42,7 @@ class user:
             self.connect_to_github()
         except:
             print("looks like your settings are not setup or your github access token is wrong")
-            self.setup_client
+            self.setup_client()
         while self.running:
             self.main_menu()
         self.g.close()
@@ -127,6 +121,6 @@ class log:
         self.value = input("input log:\n")
 
 
-u = user(access_token)
+u = user()
 
 u.access_github()
