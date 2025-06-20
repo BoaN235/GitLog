@@ -14,7 +14,7 @@ git clone https://github.com/BoaN235/GitLog.git
 
 2. install dependencies by running this in terminal
 ```
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. run the script
