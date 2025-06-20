@@ -1,6 +1,19 @@
 # Git Log
 terminalcraft submission
 
+```
+    /$$$$$$  /$$   /$$     /$$                          
+   /$$__  $$|__/  | $$    | $$                          
+  | $$  \__/ /$$ /$$$$$$  | $$        /$$$$$$   /$$$$$$ 
+  | $$ /$$$$| $$|_  $$_/  | $$       /$$__  $$ /$$__  $$
+  | $$|_  $$| $$  | $$    | $$      | $$  \ $$| $$  \ $$
+  | $$  \ $$| $$  | $$ /$$| $$      | $$  | $$| $$  | $$
+  |  $$$$$$/| $$  |  $$$$/| $$$$$$$$|  $$$$$$/|  $$$$$$$
+   \______/ |__/   \___/  |________/ \______/  \____  $$
+                                               /$$  \ $$
+                                              |  $$$$$$/
+                                               \______/
+```
 ## Description
 This is an app that allows you to create logs in terminal. This is helps if you are working on a project and want a consistent log or journal. It can be used as a devlog showing important events and when they occurred.
 
