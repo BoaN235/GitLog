@@ -6,6 +6,7 @@ This is an app that allows you to create logs in terminal. This is helps if you 
 
 ## Installation
 
+### Windows
 1. clone the repo by running this in terminal
 
 ```
@@ -16,6 +17,38 @@ git clone https://github.com/BoaN235/GitLog.git
 ```
 pip install -r requirements.txt
 ```
+### Linux
+1. clone the repo by running this in terminal
+
+```
+git clone https://github.com/BoaN235/GitLog.git
+```
+
+2. create a virtual env 
+```
+python -m venv GitLog
+```
+
+3. install dependencies to the virtual env
+```
+GitLog/bin/pip install -r requirements.txt
+```
+
+5. activate the virtual env
+```
+source GitLog/bin/activate
+```
+
+6. when finished using the application run this to close the virtual env
+```
+deactivate 
+```
+
+### MacOS
+
+Not Currently tested
+
+### Running the Script
 
 3. run the script
 ```

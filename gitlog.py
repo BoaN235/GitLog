@@ -2,6 +2,7 @@ from github import Github, Auth
 import json
 import datetime
 import keyring
+import os
 
 
 class user:
@@ -121,9 +122,11 @@ class repository:
         except:
             msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log_msg
             self.repo.create_file("LOG.md", "added LOG.MD file", msg)
+        with open('LOG.md', 'w') as f: # updates a json file
+            f.write(msg)
         print("\nCompleted Log")
         return
-        
+    
 
 class log:
     def __init__(self):
