@@ -108,14 +108,18 @@ class repository:
         #else:
         #    image_md = ""
         log_msg = f"\n\n### {log.title} -- {log.date}\n\n{log.value}\n" #+ image_md
-        for content in self.contents:
-            org_content = content.decoded_content.decode()
-            if content.path == "LOG.md":
-                msg = str(org_content) +  log_msg
-                self.repo.update_file(content.path, "updated LOG.MD file", msg , content.sha)
-                Has_Log_File = True
-        if Has_Log_File == False:
-            msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log
+        try:
+            for content in self.contents:
+                org_content = content.decoded_content.decode()
+                if content.path == "LOG.md":
+                    msg = str(org_content) +  log_msg
+                    self.repo.update_file(content.path, "updated LOG.MD file", msg , content.sha)
+                    Has_Log_File = True
+            if Has_Log_File == False:
+                msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log_msg
+                self.repo.create_file("LOG.md", "added LOG.MD file", msg)
+        except:
+            msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log_msg
             self.repo.create_file("LOG.md", "added LOG.MD file", msg)
         print("\nCompleted Log")
         return
