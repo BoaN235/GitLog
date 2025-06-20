@@ -145,5 +145,8 @@ python gitlog.py
 
       You have successfully created a log.
 
+![image](https://github.com/user-attachments/assets/8d81a330-1e51-4e4f-af6e-d8aeff2aaf92)
+
+
 ## Next Steps
 - allowing you to send images with a log
