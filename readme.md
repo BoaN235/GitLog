@@ -50,12 +50,12 @@ Not Currently tested
 
 ### Running the Script
 
-3. run the script
+1. run the script
 ```
 python gitlog.py
 ```
 
-4. get your github access token and input it when ask for it
+2. get your github access token and input it when ask for it
     - go to the github page at [github.com](https://github.com/)
     - click on your profile
           ![image](https://github.com/user-attachments/assets/caf7b4aa-830f-4c1a-9820-8f9fcff9888b)
