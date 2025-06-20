@@ -58,6 +58,7 @@ class user:
             data.append(str(repo.full_name))
         with open('data.json', 'w') as f: # updates a json file
             json.dump(data, f, sort_keys=True)
+        print("updated repo list")
 
     def set_current_repo(self):
         print(self.cur_repo)
@@ -85,7 +86,7 @@ class user:
             self.set_current_repo()
         with open('data.json', 'r') as f:
             data = json.load(f)
-        for repo_name in data:
+        for repo_name in data: 
             if repo_name == self.cur_repo:
                 l = log()
                 current_repo = self.g.get_repo(str(repo_name))
@@ -100,16 +101,22 @@ class repository:
 
     def add_log(self, log):
         Has_Log_File = False
-        log = "\n\n### " + str(log.title) + " -- "  + str(log.date) + "\n\n" + str(log.value)
+        #if log.log_has_img:
+         #   with open(log.img, "rb") as f:
+        #        image_file = f.read()
+        #        image_md = base64.b64encode(image_file).decode("utf-8")
+        #else:
+        #    image_md = ""
+        log_msg = f"\n\n### {log.title} -- {log.date}\n\n{log.value}\n" #+ image_md
         for content in self.contents:
             org_content = content.decoded_content.decode()
-            if content.path == "LOG.MD":
-                msg = str(org_content) + log
-                self.repo.update_file(content.path, "updated LOG.MD file", msg , content.sha) 
+            if content.path == "LOG.md":
+                msg = str(org_content) +  log_msg
+                self.repo.update_file(content.path, "updated LOG.MD file", msg , content.sha)
                 Has_Log_File = True
         if Has_Log_File == False:
             msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log
-            self.repo.create_file("LOG.MD", "added LOG.MD file", msg)
+            self.repo.create_file("LOG.md", "added LOG.MD file", msg)
         print("\nCompleted Log")
         return
         
@@ -119,7 +126,11 @@ class log:
         self.date = datetime.datetime.now().strftime("%A, %B %d, %Y %H:%M:%S")
         self.title = input("input title:\n")
         self.value = input("input log:\n")
-
+        #if input("do you want to add an image?[Y/N]") == "Y":
+        #    self.log_has_img = True
+        #    self.img = input("input image path:\n")
+        #else:
+        #    self.log_has_img = False
 
 u = user()
 
