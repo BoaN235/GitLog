@@ -10,9 +10,10 @@ class user:
         self.access_token = keyring.get_password("system", "github-access-token")
         self.running = True
         self.cur_repo = ""
+        print("\n\n    /$$$$$$  /$$   /$$     /$$                          \n   /$$__  $$|__/  | $$    | $$                          \n  | $$  \__/ /$$ /$$$$$$  | $$        /$$$$$$   /$$$$$$ \n  | $$ /$$$$| $$|_  $$_/  | $$       /$$__  $$ /$$__  $$\n  | $$|_  $$| $$  | $$    | $$      | $$  \ $$| $$  \ $$\n  | $$  \ $$| $$  | $$ /$$| $$      | $$  | $$| $$  | $$\n  |  $$$$$$/| $$  |  $$$$/| $$$$$$$$|  $$$$$$/|  $$$$$$$\n   \______/ |__/   \___/  |________/ \______/  \____  $$\n                                               /$$  \ $$\n                                              |  $$$$$$/\n                                               \______/ ")
 
     def main_menu(self):
-        print("\nwelcome to GitLog: " + self.cur_repo + "\n\n")
+        print("\nwelcome to GitLog: " + self.cur_repo + "\n")
         menu_option = input("1) Create Log \n2) Set Current Repo \n3) Update Repo Data \n4) Setup \n5) close\n") # get menu input
         if menu_option == "1":
             self.update_log() # update logs
