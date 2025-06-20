@@ -12,4 +12,14 @@ I finally got the basic interface working hopfully it dosen't break and I can wo
 
 ### Testing Log File -- Thursday, June 19, 2025 22:02:04
 
-I am adding along file
+I am adding alog file
+
+
+### LinuxUpload -- Friday, June 20, 2025 10:54:56
+
+I am uploading this log from my linux laptop
+
+
+### Readme -- Friday, June 20, 2025 11:26:49
+
+This is a test for the readme

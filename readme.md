@@ -85,5 +85,52 @@ python gitlog.py
 
     ```
 
+## creating a log
+      You will be asked which menu option 
+
+      ```
+            welcome to GitLog: your-current-repo
+
+
+            1) Create Log 
+            2) Set Current Repo 
+            3) Update Repo Data 
+            4) Setup 
+            5) close
+      ```
+      1. Update Repo Data
+      doing this will get your github repos
+
+      2. set current repo
+      input the number for whichever repo you want
+
+      ```
+      Which repo would you like to add a log file to
+      0) user/repo-name
+      1) user/repo-name
+      2) user/repo-name
+      3) user/repo-name
+      4) user/repo-name
+      Which repo would you like to add a log file to
+      ```
+      3. create a log
+      enter 1 in the menu to generate a log
+
+      4. input title
+
+      ```
+      input title:
+      your-title-here
+      ```
+      
+      5. input log
+
+      ```
+      input log:
+      input-your-log-here
+      ```
+
+      You have successfully created a log.
+
 ## Next Steps
 - allowing you to send images with a log
