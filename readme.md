@@ -19,6 +19,19 @@ This is an app that allows you to create logs in terminal. This is helps if you 
 
 ## Installation
 
+### Running
+
+you can now run these commands on your operationg system instead of installing a ton of stuff
+
+**windows:**
+```
+./gitlog.exe
+```
+**linux:**
+```
+./gitlog.bin
+```
+
 ### Windows
 1. clone the repo by running this in terminal
 
