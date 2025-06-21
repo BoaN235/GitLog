@@ -123,20 +123,16 @@ class repository:
         #    image_md = ""
         log_msg = f"\n\n### {log.title} -- {log.date}\n\n{log.value}\n" #+ image_md
         try:
-            for content in self.contents:
-                org_content = content.decoded_content.decode()
-                if content.path == "LOG.md":
-                    msg = str(org_content) +  log_msg
-                    self.repo.update_file(content.path, "updated LOG.MD file", msg , content.sha)
-                    Has_Log_File = True
-            if Has_Log_File == False:
-                msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log_msg
-                self.repo.create_file("LOG.md", "added LOG.MD file", msg)
+            content = self.repo.get_contents("LOG.md")  # Directly fetch the file
+            org_content = content.decoded_content.decode()
+            msg = str(org_content) + log_msg
+            self.repo.update_file(content.path, "updated LOG.md file", msg, content.sha)
         except:
             msg = "# Log\n\n## created with [GitLog](https://github.com/BoaN235/GitLog)" + log_msg
             self.repo.create_file("LOG.md", "added LOG.MD file", msg)
         with open('LOG.md', 'w') as f: # updates a json file
             f.write(msg)
+        print("\n" + log_msg + "\n")
         print("\nCompleted Log")
         return
     
