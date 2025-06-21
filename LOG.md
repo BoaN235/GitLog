@@ -33,3 +33,8 @@ I created a video of creating this log
 ### Video -- Friday, June 20, 2025 20:18:10
 
 I am creating a video when creating this log
+
+
+### does it work? -- Friday, June 20, 2025 20:19:03
+
+why isent it owrking in exe format
