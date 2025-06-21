@@ -28,3 +28,8 @@ This is a test for the readme
 ### Video -- Friday, June 20, 2025 20:17:20
 
 I created a video of creating this log
+
+
+### Video -- Friday, June 20, 2025 20:18:10
+
+I am creating a video when creating this log
