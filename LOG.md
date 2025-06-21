@@ -43,3 +43,8 @@ why isent it owrking in exe format
 ### 13 -- Friday, June 20, 2025 20:22:32
 
 why isent it owrking in exe format
+
+
+### Video Log -- Friday, June 20, 2025 20:23:15
+
+I am creating a log while I am creating a video
