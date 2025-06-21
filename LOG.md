@@ -38,3 +38,8 @@ I am creating a video when creating this log
 ### does it work? -- Friday, June 20, 2025 20:19:03
 
 why isent it owrking in exe format
+
+
+### 13 -- Friday, June 20, 2025 20:22:32
+
+why isent it owrking in exe format
