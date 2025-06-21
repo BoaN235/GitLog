@@ -23,3 +23,8 @@ I am uploading this log from my linux laptop
 ### Readme -- Friday, June 20, 2025 11:26:49
 
 This is a test for the readme
+
+
+### Video -- Friday, June 20, 2025 20:17:20
+
+I created a video of creating this log
